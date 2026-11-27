@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foto QR Traktir - Batas Jajan</title>
+<style>
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#f4f6fb;color:#0b1020;text-align:center;padding:24px 16px}
+@media (prefers-color-scheme:dark){body{background:#070b16;color:#eef2fb}}
+img{max-width:320px;width:100%;border-radius:14px;background:#fff}
+a.btn{display:inline-block;margin:14px 0;padding:14px 24px;border-radius:14px;background:#0a74ff;color:#fff;text-decoration:none;font-weight:700}
+p{max-width:420px;margin:8px auto}
+</style>
+</head>
+<body>
+<h2>Traktir Batas Jajan</h2>
+<p>Foto QR sedang diunduh. Kalau belum terunduh, ketuk tombol di bawah. Lalu buka e-wallet atau mobile banking, pilih <b>Scan</b>, dan unggah foto dari galeri.</p>
+<img src="qr-dana.jpg" alt="QRIS traktir">
+<br><a class="btn" id="dl" href="qr-dana.jpg" download="QRIS-Batas-Jajan.jpg">Unduh foto QR</a>
+<p><a href="index.html">Kembali ke beranda</a></p>
+<script>
+setTimeout(function(){try{document.getElementById("dl").click()}catch(e){}},400);
+</script>
+</body>
+</html>

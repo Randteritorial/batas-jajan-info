@@ -1,16 +1,97 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kebijakan Privasi - Batas Jajan</title></head>
-<body style="font-family:sans-serif;max-width:640px;margin:40px auto;padding:0 16px;line-height:1.6">
-<h1>Kebijakan Privasi Batas Jajan</h1>
-<p>Terakhir diperbarui: 25 November 2026</p>
-<h2>Data yang disimpan</h2>
-<p>Data keuangan yang Anda catat (transaksi, dompet, hutang, aset) disimpan di perangkat Anda.</p>
-<h2>Login Google dan cadangan</h2>
-<p>Jika Anda memilih masuk dengan Google, aplikasi meminta akses ke email dan profil dasar untuk menampilkan akun yang masuk, serta akses ke folder data aplikasi di Google Drive Anda (izin drive.appdata). Folder ini hanya bisa diakses oleh aplikasi ini, dan dipakai untuk menyimpan cadangan data keuangan Anda agar bisa dipulihkan.</p>
-<h2>Yang tidak kami lakukan</h2>
-<p>Kami tidak mengumpulkan, menyimpan di server kami, menjual, atau membagikan data Anda kepada pihak mana pun. Pengembang tidak memiliki akses ke data Anda.</p>
-<h2>Menghapus data</h2>
-<p>Anda dapat menghapus data lokal dengan menghapus aplikasi atau memakai tombol Hapus semua data. Data cadangan dapat dihapus dengan mencabut akses aplikasi di pengaturan akun Google Anda (myaccount.google.com/permissions) dan menghapus data aplikasi di Google Drive.</p>
-<h2>Kontak</h2>
-<p>9simcity@gmail.com</p>
-</body></html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kebijakan Privasi - Batas Jajan</title>
+<meta name="theme-color" content="#f4f6fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070b16" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+:root{--bg:#f4f6fb;--surface:rgba(255,255,255,.74);--solid:#fff;--ink:#0b1020;--mute:#566074;--line:rgba(15,23,42,.10);--brand:#0a74ff;--brand2:#5b5ce6;--shadow:0 12px 32px rgba(20,30,70,.10)}
+@media (prefers-color-scheme:dark){:root{--bg:#070b16;--surface:rgba(255,255,255,.06);--solid:#111a2e;--ink:#eef2fb;--mute:#9aa6bd;--line:rgba(255,255,255,.12);--brand:#4d9bff;--brand2:#8b8cf5;--shadow:0 12px 32px rgba(0,0,0,.45)}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 40% at 12% 0,rgba(10,116,255,.18),transparent 62%),radial-gradient(50% 36% at 100% 24%,rgba(168,85,247,.14),transparent 62%)}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:8px}
+.nav{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line);-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%)}
+.nav .in{max-width:760px;margin:0 auto;padding:0 20px;height:62px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.brand img{width:32px;height:32px;border-radius:9px}
+.back{font-size:.92rem;font-weight:600;text-decoration:none;padding:8px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+.back:hover{border-color:var(--brand)}
+.wrap{max-width:760px;margin:0 auto;padding:44px 20px 72px}
+h1{font-size:clamp(2rem,6vw,2.8rem);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px;font-weight:800}
+.mute{display:inline-block;color:var(--mute);font-size:.86rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px;margin:0 0 26px}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:8px 26px 26px;box-shadow:var(--shadow);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.doc>p:first-child{margin-top:22px;color:var(--mute);font-size:1.02rem}
+.doc h2{font-size:1.12rem;letter-spacing:-.01em;margin:30px 0 6px;padding-top:24px;border-top:1px solid var(--line)}
+.doc p,.doc li{margin:7px 0;color:var(--mute)}
+.doc li::marker{color:var(--brand)}
+.doc ul{padding-left:22px;margin:8px 0}
+.doc b{color:var(--ink)}
+footer{max-width:760px;margin:0 auto;padding:0 20px 40px;color:var(--mute);font-size:.88rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer a{color:inherit}
+@media(max-width:520px){.doc{padding:4px 18px 22px;border-radius:20px}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="in">
+    <a class="brand" href="index.html"><img src="icon.png" alt="" width="32" height="32"><span>Batas Jajan</span></a>
+    <a class="back" href="index.html">&larr; Beranda</a>
+  </div>
+</header>
+<main class="wrap">
+<h1>Kebijakan Privasi</h1>
+<p class="mute">Aplikasi: Batas Jajan (com.batasjajan.app) &middot; Diperbarui: 27 November 2026</p>
+<div class="doc">
+<p>Batas Jajan adalah aplikasi pencatat keuangan. Kami menjaga data keuangan Anda sebagai milik Anda. Halaman ini menjelaskan data apa yang dipakai aplikasi, di mana disimpan, dan bagaimana Anda mengendalikannya.</p>
+
+<h2>1. Data yang Anda isi</h2>
+<p>Transaksi, dompet, utang, aset, dan kategori yang Anda catat disimpan di penyimpanan aplikasi pada HP Anda. Tanpa login, data ini tidak dikirim ke mana pun dan tidak kami lihat.</p>
+
+<h2>2. Login Google (opsional)</h2>
+<p>Jika Anda masuk dengan Google, aplikasi menerima nama, alamat email, dan foto profil akun Anda untuk menampilkan akun yang aktif. Aplikasi juga meminta izin <b>drive.appdata</b>, yaitu akses ke folder rahasia aplikasi di Google Drive Anda sendiri.</p>
+<ul>
+<li>Cadangan data pribadi Anda disimpan di folder rahasia itu, di Google Drive milik Anda.</li>
+<li>Folder tersebut tidak bisa dibuka oleh aplikasi lain, dan kami tidak punya akses ke Drive Anda.</li>
+<li>Anda dapat menghapus cadangan kapan saja lewat pengaturan Google Drive (Kelola aplikasi) atau mencabut izin di akun Google Anda.</li>
+</ul>
+
+<h2>3. Mode Bersama</h2>
+<p>Mode Bersama memungkinkan dua orang mengelola satu buku keuangan. Agar bisa dipakai berdua, data mode ini disimpan di layanan <b>Google Firebase (Firestore dan Authentication)</b>.</p>
+<ul>
+<li>Data yang disimpan: nama buku, alamat email anggota dan undangan, serta isi buku bersama (dompet, transaksi, utang, aset, kategori).</li>
+<li>Hanya dua anggota buku yang bisa membaca dan mengubah buku itu. Orang yang diundang hanya bisa melihat undangan untuk emailnya sendiri.</li>
+<li>Pengelola proyek Firebase aplikasi ini secara teknis memiliki akses administrator ke penyimpanan tersebut. Kami tidak membaca isi buku Anda, tidak menjualnya, dan tidak memakainya untuk iklan.</li>
+<li>Jika anggota terakhir keluar dari buku, seluruh isi buku dihapus permanen. Jika masih ada anggota lain, data tetap ada untuk anggota itu.</li>
+</ul>
+
+<h2>4. Cadangan ke berkas</h2>
+<p>Fitur ini membuat berkas cadangan yang Anda simpan sendiri. Berkas tidak dikirim ke kami. Lokasi penyimpanannya Anda tentukan.</p>
+
+<h2>5. Yang tidak kami lakukan</h2>
+<ul>
+<li>Tidak ada iklan dan tidak ada pelacak atau analitik pihak ketiga.</li>
+<li>Tidak menjual atau membagikan data Anda kepada pihak lain.</li>
+<li>Penggunaan informasi dari Google mengikuti Kebijakan Data Pengguna Layanan API Google, termasuk persyaratan Penggunaan Terbatas.</li>
+</ul>
+
+<h2>6. Penghapusan data</h2>
+<ul>
+<li>Data di HP: hapus aplikasi, atau pakai tombol hapus data di aplikasi. Tanpa cadangan, data tidak bisa dikembalikan.</li>
+<li>Cadangan Google Drive: hapus lewat pengaturan Google Drive atau cabut izin aplikasi di akun Google Anda.</li>
+<li>Buku bersama: keluar dari buku lewat menu Bersama. Untuk menghapus data akun Anda dari mode Bersama atau meminta bantuan, hubungi kami lewat <a href="https://forms.gle/u1wR8XMx7bnmRf876">formulir ini</a>.</li>
+</ul>
+
+<h2>7. Perubahan dan kontak</h2>
+<p>Kebijakan ini dapat diperbarui, dan tanggal pembaruan tertera di atas. Pertanyaan atau permintaan terkait data Anda dapat dikirim lewat <a href="https://forms.gle/u1wR8XMx7bnmRf876">formulir masukan</a>.</p>
+</div>
+</main>
+<footer><span>Dibuat oleh Teritorial</span><a href="index.html">Beranda Batas Jajan</a></footer>
+</body>
+</html>

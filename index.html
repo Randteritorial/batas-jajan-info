@@ -1,9 +1,261 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Batas Jajan</title></head>
-<body style="font-family:sans-serif;max-width:640px;margin:40px auto;padding:0 16px;line-height:1.6">
-<h1>Batas Jajan</h1>
-<p>Batas Jajan adalah aplikasi Android untuk mencatat keuangan pribadi: pemasukan, pengeluaran, dompet, hutang, paylater, dan aset. Aplikasi bisa dipakai tanpa akun dan tanpa internet.</p>
-<p>Pengguna yang masuk dengan akun Google dapat mencadangkan datanya secara otomatis ke Google Drive miliknya sendiri.</p>
-<p><a href="privacy.html">Kebijakan Privasi</a></p>
-<p>Kontak: randteritorial11@gmail.com</p>
-</body></html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Batas Jajan - Catatan Keuangan</title>
+<meta name="description" content="Batas Jajan: aplikasi pencatat keuangan sederhana untuk Android. Bisa dipakai offline, tanpa akun, dengan cadangan opsional ke Google Drive Anda sendiri.">
+<meta name="theme-color" content="#f4f6fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#070b16" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Batas Jajan - Catatan Keuangan">
+<meta property="og:description" content="Catat pemasukan dan pengeluaran, kelola dompet, utang, dan aset. Bisa dipakai tanpa akun dan tanpa internet.">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<style>
+:root{--bg:#f4f6fb;--surface:rgba(255,255,255,.74);--solid:#fff;--ink:#0b1020;--mute:#566074;--line:rgba(15,23,42,.10);--brand:#0a74ff;--brand2:#5b5ce6;--shadow:0 12px 32px rgba(20,30,70,.10);--r:22px}
+@media (prefers-color-scheme:dark){:root{--bg:#070b16;--surface:rgba(255,255,255,.06);--solid:#111a2e;--ink:#eef2fb;--mute:#9aa6bd;--line:rgba(255,255,255,.12);--brand:#4d9bff;--brand2:#8b8cf5;--shadow:0 12px 32px rgba(0,0,0,.45)}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);background:var(--bg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 40% at 12% 0,rgba(10,116,255,.20),transparent 62%),radial-gradient(50% 36% at 100% 24%,rgba(168,85,247,.16),transparent 62%),radial-gradient(60% 40% at 0 100%,rgba(244,114,182,.14),transparent 62%)}
+a{color:var(--brand)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:3px;border-radius:10px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--solid);padding:8px 12px;border-radius:10px;z-index:50}
+
+/* bilah atas */
+.nav{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line);-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.brand img{width:32px;height:32px;border-radius:9px}
+.nav nav{display:flex;align-items:center;gap:6px}
+.nav nav a{color:var(--mute);text-decoration:none;font-size:.92rem;font-weight:500;padding:8px 12px;border-radius:999px}
+.nav nav a:hover{color:var(--ink);background:var(--line)}
+.nav nav .cta{background:var(--ink);color:var(--bg);font-weight:600}
+.nav nav .cta:hover{background:var(--ink);color:var(--bg);opacity:.88}
+@media(max-width:640px){.nav nav a:not(.cta){display:none}}
+
+/* hero */
+.hero{display:grid;gap:40px;align-items:center;padding:56px 0 8px;text-align:center}
+@media(min-width:880px){.hero{grid-template-columns:1.1fr .9fr;text-align:left;padding-top:84px}}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;color:var(--brand);background:var(--surface);border:1px solid var(--line);padding:6px 14px;border-radius:999px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.pill i{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+h1{font-size:clamp(2.5rem,7vw,4.2rem);line-height:1.04;letter-spacing:-.035em;margin:18px 0 14px;font-weight:800;background:linear-gradient(135deg,var(--ink) 30%,var(--brand));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.12rem;color:var(--mute);max-width:520px;margin:0 auto}
+@media(min-width:880px){.lead{margin:0}}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;justify-content:center}
+@media(min-width:880px){.actions{justify-content:flex-start}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:700;border-radius:16px;padding:15px 24px;font-size:1rem;transition:transform .15s,box-shadow .2s,opacity .2s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 12px 26px rgba(10,116,255,.35)}
+.btn-primary:hover{box-shadow:0 16px 32px rgba(10,116,255,.45)}
+.btn-primary[aria-disabled=true]{opacity:.65}
+.btn-ghost{color:var(--ink);background:var(--surface);border:1px solid var(--line)}
+.meta{color:var(--mute);font-size:.88rem;margin-top:14px;min-height:1.3em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;justify-content:center}
+@media(min-width:880px){.chips{justify-content:flex-start}}
+.chips span{font-size:.82rem;color:var(--mute);border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--surface)}
+
+/* contoh tampilan ponsel */
+.stage{display:flex;flex-direction:column;align-items:center;gap:12px}
+.phone{width:min(280px,76vw);aspect-ratio:9/18.6;border-radius:42px;padding:10px;background:linear-gradient(160deg,#2b3350,#0e1325);box-shadow:0 30px 60px rgba(20,30,70,.35),inset 0 0 0 2px rgba(255,255,255,.08);transform:rotate(-3deg)}
+.screen{height:100%;border-radius:33px;overflow:hidden;position:relative;padding:20px 14px;color:#0b0b0f;background:radial-gradient(70% 40% at 15% 0,#b9d6ff,transparent 62%),radial-gradient(60% 40% at 100% 35%,#e4cbff,transparent 62%),radial-gradient(70% 45% at 8% 100%,#ffd5e1,transparent 62%),#eef2f9}
+.pm-top{display:flex;align-items:center;gap:9px;margin-bottom:16px}
+.pm-av{width:30px;height:30px;border-radius:50%;background:#007aff;color:#fff;display:grid;place-items:center;font-weight:700;font-size:.8rem}
+.pm-top b{display:block;font-size:.78rem;line-height:1.15}.pm-top small{font-size:.62rem;color:#667}
+.pm-lbl{font-size:.55rem;letter-spacing:.06em;font-weight:600;color:#667}
+.pm-big{font-size:1.65rem;font-weight:800;letter-spacing:-.03em;margin:2px 0 12px}
+.pm-card{border-radius:16px;padding:11px 13px;color:#fff;background:linear-gradient(135deg,#0a84ff,#5e5ce6);box-shadow:0 8px 18px rgba(10,132,255,.3)}
+.pm-card small{display:block;font-size:.58rem;opacity:.9}.pm-card b{font-size:1.05rem}
+.pm-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.pm-grid div{background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.9);border-radius:14px;padding:9px 10px}
+.pm-grid small{display:block;font-size:.55rem;color:#667}.pm-grid b{font-size:.74rem}
+.pm-grid .g{color:#248a3d}.pm-grid .r{color:#d70015}
+.pm-nav{position:absolute;left:12px;right:12px;bottom:12px;height:42px;border-radius:24px;background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.9);display:flex;align-items:center;justify-content:space-around;box-shadow:0 8px 20px rgba(31,41,80,.15)}
+.pm-nav i{width:16px;height:16px;border-radius:5px;background:#9aa3b5}
+.pm-nav i.plus{width:44px;height:32px;border-radius:20px;background:#007aff}
+.cap{font-size:.78rem;color:var(--mute)}
+
+/* bagian */
+.sec{padding:84px 0 0}
+.eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin:0 0 8px}
+.sec h2{font-size:clamp(1.7rem,4vw,2.3rem);line-height:1.15;letter-spacing:-.025em;margin:0 0 10px}
+.sec .intro{color:var(--mute);max-width:560px;margin:0 0 30px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.card h3{font-size:1.05rem;margin:14px 0 4px;letter-spacing:-.01em}
+.card p{margin:0;color:var(--mute);font-size:.95rem}
+.ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 8px 18px rgba(10,116,255,.28)}
+.ico svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* langkah */
+.steps{display:grid;gap:14px;counter-reset:s;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.step{counter-increment:s;position:relative;padding-top:58px}
+.step::before{content:counter(s);position:absolute;left:22px;top:20px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.9rem;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2))}
+.note{margin-top:18px;display:flex;gap:12px;align-items:flex-start;color:var(--mute);font-size:.93rem}
+.note svg{flex:none;width:20px;height:20px;margin-top:3px;fill:none;stroke:var(--brand);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* info penting */
+.callout{border-left:4px solid var(--brand);border-radius:6px var(--r) var(--r) 6px}
+.callout ul{margin:10px 0 0;padding-left:20px;color:var(--mute)}.callout li{margin:7px 0}
+.callout b{color:var(--ink)}
+
+/* dukung */
+.links{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.links a{display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:15px 18px;transition:transform .15s,border-color .2s;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.links a:hover{border-color:var(--brand);transform:translateY(-2px)}
+.links a b{display:block;font-weight:600}.links a small{display:block;color:var(--mute)}
+.links a::after{content:"›";color:var(--mute);font-size:1.5rem;line-height:1}
+details.qris{margin-top:16px}
+details.qris summary{cursor:pointer;font-weight:600;padding:14px 18px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.qris summary::-webkit-details-marker{display:none}
+details.qris summary::after{content:"+";font-size:1.4rem;color:var(--mute)}
+details.qris[open] summary::after{content:"\2212"}
+.qr{display:block;max-width:300px;width:100%;margin:6px auto 18px;border-radius:14px;background:#fff}
+details.qris.card{padding:0}
+.qtxt{padding:0 18px 20px;text-align:center}
+.qtxt p{color:var(--mute);font-size:.95rem;margin:0 0 10px}
+.qtxt .who{font-size:.88rem;margin:10px 0 14px}
+.qtxt .qdl{display:flex;max-width:300px;margin:0 auto}
+.qtxt ol{text-align:left;max-width:360px;margin:16px auto 0;padding-left:22px;color:var(--mute);font-size:.92rem}
+.qtxt li{margin:5px 0}
+
+footer{margin-top:84px;border-top:1px solid var(--line);padding:26px 0 40px;color:var(--mute);font-size:.88rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer a{color:inherit}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Lewati ke isi</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="icon.png" alt="" width="32" height="32"><span>Batas Jajan</span></a>
+    <nav aria-label="Menu utama">
+      <a href="#fitur">Fitur</a>
+      <a href="#pasang">Cara pasang</a>
+      <a href="#dukung">Dukung</a>
+      <a class="cta" href="#unduh">Unduh</a>
+    </nav>
+  </div>
+</header>
+
+<main id="isi">
+<div class="wrap" id="top">
+  <section class="hero" id="unduh">
+    <div>
+      <span class="pill"><i></i>Aplikasi Android</span>
+      <h1>Batas Jajan</h1>
+      <p class="lead">Catat pemasukan dan pengeluaran, kelola dompet, utang, dan aset. Bisa dipakai tanpa akun dan tanpa internet.</p>
+      <div class="actions">
+        <a class="btn btn-primary" id="dl" href="https://github.com/Randteritorial/batas-jajan-info/releases/latest" aria-disabled="true">Unduh versi terbaru</a>
+        <a class="btn btn-ghost" href="#fitur">Lihat fitur</a>
+      </div>
+      <div class="meta" id="meta" role="status">Memeriksa versi terbaru...</div>
+      <div class="chips" aria-label="Keunggulan"><span>Bisa offline</span><span>Tanpa akun</span><span>Cadangan ke Google Drive Anda</span><span>Mode Pribadi &amp; Bersama</span></div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="phone"><div class="screen">
+        <div class="pm-top"><span class="pm-av">S</span><div><b>Halo, Sari</b><small>Batas Jajan</small></div></div>
+        <span class="pm-lbl">SALDO SEMUA DOMPET</span>
+        <div class="pm-big">Rp2.450.000</div>
+        <div class="pm-card"><small>Kekayaan bersih</small><b>Rp3.100.000</b></div>
+        <div class="pm-grid"><div><small>Pemasukan bulan ini</small><b class="g">Rp5.000.000</b></div><div><small>Pengeluaran bulan ini</small><b class="r">Rp2.550.000</b></div></div>
+        <div class="pm-nav"><i></i><i></i><i class="plus"></i><i></i><i></i></div>
+      </div></div>
+      <span class="cap">Contoh tampilan, angka hanya ilustrasi</span>
+    </div>
+  </section>
+
+  <section class="sec" id="fitur">
+    <p class="eyebrow">Fitur</p>
+    <h2>Semua catatan uang di satu tempat</h2>
+    <p class="intro">Sederhana dipakai sehari-hari, tapi cukup lengkap untuk dompet, utang, sampai aset.</p>
+    <div class="grid">
+      <article class="card"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c.5-3.2 2.8-5 5.5-5s5 1.8 5.5 5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M16 14.2c2.6-.2 4.6 1.4 5 4.3"/></svg></span><h3>Pribadi dan Bersama</h3><p>Mode <b>Pribadi</b> untuk catatan sendiri, mode <b>Bersama</b> untuk mengelola satu buku berdua.</p></article>
+      <article class="card"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 7h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/><path d="M3 7V6a2 2 0 0 1 2-2h12"/><circle cx="17" cy="14" r="1.2"/></svg></span><h3>Dompet dan transaksi</h3><p>Catat pemasukan, pengeluaran, dan pindah dana antar dompet atau rekening.</p></article>
+      <article class="card"><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 7h12l-3-3M17 17H5l3 3"/></svg></span><h3>Utang dan piutang</h3><p>Pantau utang Anda dan uang yang dipinjamkan, lengkap dengan pembayarannya.</p></article>
+      <article class="card"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span><h3>Paylater</h3><p>Catat tagihan paylater dan cicilannya supaya tidak terlewat.</p></article>
+      <article class="card"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><h3>Aset</h3><p>Simpan aset seperti crypto, saham, dan emas, lalu lihat untung atau ruginya.</p></article>
+      <article class="card"><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.6-7.9A6 6 0 0 1 18 9.5 4.3 4.3 0 0 1 17.5 18H7z"/></svg></span><h3>Cadangan ke Google Drive</h3><p>Otomatis ke Drive Anda sendiri, dan bisa dipulihkan setelah aplikasi dipasang ulang.</p></article>
+    </div>
+  </section>
+
+  <section class="sec" id="pasang">
+    <p class="eyebrow">Cara memasang</p>
+    <h2>Tiga langkah, selesai</h2>
+    <p class="intro">Aplikasi ini dibagikan di luar Play Store, jadi pemasangannya sedikit berbeda.</p>
+    <div class="steps">
+      <article class="card step"><h3>Unduh dan buka</h3><p>Ketuk tombol unduh, lalu buka berkas <b>.apk</b> yang terunduh.</p></article>
+      <article class="card step"><h3>Izinkan pemasangan</h3><p>Jika diminta, izinkan pemasangan dari sumber ini untuk peramban yang Anda pakai.</p></article>
+      <article class="card step"><h3>Pilih Tetap pasang</h3><p>Jika muncul peringatan Play Protect, pilih <b>Tetap pasang</b>.</p></article>
+    </div>
+    <div class="note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg><span><b style="color:var(--ink)">Memperbarui:</b> pasang versi baru <b style="color:var(--ink)">di atas</b> aplikasi lama. Jangan dihapus dulu supaya data tetap ada.</span></div>
+  </section>
+
+  <section class="sec" id="info">
+    <p class="eyebrow">Info penting</p>
+    <h2>Sebelum mulai</h2>
+    <div class="card callout">
+      <ul>
+        <li>Tanpa login, data hanya ada di HP ini dan <b>hilang jika aplikasi dihapus</b>. Masuk dengan Google agar data bisa dipulihkan.</li>
+        <li>Data pribadi dicadangkan ke Google Drive Anda sendiri, bukan ke server kami.</li>
+        <li>Mode Bersama menyimpan buku bersama di layanan Firebase. Lihat <a href="privacy.html">Kebijakan Privasi</a>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" id="dukung">
+    <p class="eyebrow">Komunitas</p>
+    <h2>Ikuti dan dukung kami</h2>
+    <p class="intro">Ada saran atau masalah, atau ingin mampir ke akun kami? Silakan.</p>
+    <div class="links">
+      <a href="https://www.instagram.com/scorpio.libra_26"><span><b>Instagram kami berdua</b><small>Yuk main ke akun kami</small></span></a>
+      <a href="https://www.tiktok.com/@teritorial07"><span><b>TikTok Teritorial</b><small>@teritorial07</small></span></a>
+      <a href="https://www.tiktok.com/@ranyawww_"><span><b>TikTok Ranya</b><small>@ranyawww_</small></span></a>
+      <a href="https://forms.gle/u1wR8XMx7bnmRf876"><span><b>Kirim masukan</b><small>Ada saran atau masalah? Tulis di sini</small></span></a>
+    </div>
+    <details class="card qris">
+      <summary>Traktir kami (QRIS)</summary>
+      <div class="qtxt">
+        <p>Batas Jajan kami buat berdua dengan sepenuh hati dan bisa dipakai gratis. Kalau aplikasi ini membantu kamu mengatur uang, traktir kami segelas kopi ya. Berapa pun sangat berarti dan bikin kami makin semangat menambah fitur baru.</p>
+        <img class="qr" src="qr-dana.jpg" alt="QRIS untuk traktir" loading="lazy">
+        <p class="who">Penerima: <b>Teritorial</b> (QRIS, bisa dibayar dari semua e-wallet dan mobile banking)</p>
+        <a class="btn btn-primary qdl" href="qr-dana.jpg" download="QRIS-Batas-Jajan.jpg">Unduh foto QR</a>
+        <ol><li>Unduh foto QR di atas.</li><li>Buka e-wallet atau mobile banking, pilih <b>Scan</b>, lalu unggah foto dari galeri.</li><li>Isi nominal sesukamu, selesai. Terima kasih banyak!</li></ol>
+      </div>
+    </details>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap"><span>Dibuat oleh Teritorial</span><a href="privacy.html">Kebijakan Privasi</a></div>
+</footer>
+
+<script>
+(function(){
+  var REPO="Randteritorial/batas-jajan-info",dl=document.getElementById("dl"),meta=document.getElementById("meta");
+  fetch("https://api.github.com/repos/"+REPO+"/releases/latest").then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+    var a=(j.assets||[]).filter(function(x){return /\.apk$/i.test(x.name)})[0];
+    if(!a)throw 0;
+    dl.href=a.browser_download_url;dl.removeAttribute("aria-disabled");
+    dl.textContent="Unduh "+a.name.replace(/\.apk$/i,"").replace(/-/g," ").replace(/ v/," v");
+    var d=new Date(j.published_at);
+    meta.textContent=a.name+" · "+(a.size/1048576).toFixed(1)+" MB · dirilis "+d.toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
+  }).catch(function(){
+    fetch("versi.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
+      if(!j.url)throw 0;
+      dl.href=j.url;dl.removeAttribute("aria-disabled");
+      dl.textContent="Unduh Batas Jajan v"+j.version;
+      meta.textContent="Versi "+j.version;
+    }).catch(function(){
+      dl.removeAttribute("aria-disabled");
+      meta.textContent="Belum bisa membaca versi terbaru. Tombol membuka halaman rilis.";
+    });
+  });
+})();
+</script>
+</body>
+</html>
