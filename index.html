@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Batas Jajan - Catatan Keuangan untuk Android</title>
-<meta name="description" content="Batas Jajan: aplikasi pencatat keuangan untuk Android. Dompet, utang, aset, paylater, dan mode Bersama berdua dengan api harian. Bisa offline, tanpa akun, cadangan opsional ke Google Drive Anda sendiri.">
+<title>Batas Jajan - Catatan Keuangan untuk Android dan Windows</title>
+<meta name="description" content="Batas Jajan: aplikasi pencatat keuangan untuk Android dan Windows. Dompet, utang, aset, paylater, dan mode Bersama berdua dengan api harian. Bisa offline, tanpa akun, cadangan opsional ke Google Drive Anda sendiri.">
 <meta name="theme-color" content="#f4f6fb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#070b16" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Batas Jajan - Catatan Keuangan untuk Android">
+<meta property="og:title" content="Batas Jajan - Catatan Keuangan untuk Android dan Windows">
 <meta property="og:description" content="Catat pemasukan dan pengeluaran, kelola dompet, utang, aset, dan keuangan berdua dengan api harian. Bisa dipakai tanpa akun dan tanpa internet.">
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
@@ -189,6 +189,7 @@ footer .fl{display:flex;gap:18px;flex-wrap:wrap}
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}.rv{opacity:1;transform:none}.screen{transition:none}}
+.pick{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit}.pick h3{margin:0}.pick p{margin:0;color:var(--mute)}.pick .btn{margin-top:6px;align-self:flex-start}.warn{border-left-color:#f5a524}.pagehero{padding:64px 0 8px;text-align:center}.pagehero .actions{justify-content:center}.pagehero .chips{justify-content:center}
 </style>
 </head>
 <body>
@@ -212,14 +213,15 @@ footer .fl{display:flex;gap:18px;flex-wrap:wrap}
 <div class="wrap" id="top">
   <section class="hero" id="unduh">
     <div>
-      <span class="pill"><b id="ver">v1.7.0</b>Aplikasi Android</span>
+      <span class="pill"><b id="ver">v1.7.0</b>Android dan Windows</span>
       <h1>Batas Jajan</h1>
       <p class="lead">Catat pemasukan dan pengeluaran, kelola dompet, utang, aset, dan keuangan berdua dengan api harian. Bisa dipakai tanpa akun dan tanpa internet.</p>
       <div class="actions">
-        <a class="btn btn-primary" id="dl" href="https://github.com/Randteritorial/batas-jajan-info/releases/latest" aria-disabled="true">Unduh versi terbaru</a>
+        <a class="btn btn-primary" href="android.html">Unduh untuk Android</a>
+        <a class="btn btn-primary" href="windows.html">Unduh untuk Windows</a>
         <a class="btn btn-ghost" href="#baru">Lihat yang baru</a>
       </div>
-      <div class="meta" id="meta" role="status">Memeriksa versi terbaru...</div>
+      <div class="meta" id="meta" role="status">Pilih perangkat Anda untuk melihat cara pasang dan mengunduh.</div>
       <div class="chips" aria-label="Keunggulan"><span>Gratis</span><span>Bisa offline</span><span>Tanpa akun</span><span>Tanpa iklan</span><span>Cadangan ke Google Drive Anda</span><span>Mode berdua</span></div>
     </div>
 
@@ -316,15 +318,13 @@ footer .fl{display:flex;gap:18px;flex-wrap:wrap}
   </section>
 
   <section class="sec rv" id="pasang">
-    <p class="eyebrow">Cara memasang</p>
-    <h2>Tiga langkah, selesai</h2>
-    <p class="intro">Aplikasi ini dibagikan di luar Play Store, jadi pemasangannya sedikit berbeda.</p>
+    <p class="eyebrow">Unduh</p>
+    <h2>Pilih perangkat Anda</h2>
+    <p class="intro">Setiap perangkat punya halaman sendiri dengan cara memasang, peringatan yang mungkin muncul, dan tombol unduh.</p>
     <div class="steps">
-      <article class="card step"><h3>Unduh dan buka</h3><p>Ketuk tombol unduh, lalu buka berkas <b>.apk</b> yang terunduh.</p></article>
-      <article class="card step"><h3>Izinkan pemasangan</h3><p>Jika diminta, izinkan pemasangan dari sumber ini untuk peramban yang Anda pakai.</p></article>
-      <article class="card step"><h3>Pilih Tetap pasang</h3><p>Jika muncul peringatan Play Protect, pilih <b>Tetap pasang</b>.</p></article>
+      <a class="card pick" href="android.html"><h3>Android</h3><p>Berkas .apk untuk HP Android. Bisa dipakai tanpa akun, dengan login Google, dan mode Bersama berdua.</p><span class="btn btn-primary">Lihat dan unduh</span></a>
+      <a class="card pick" href="windows.html"><h3>Windows</h3><p>Berkas .exe untuk komputer Windows. Langsung dibuka tanpa instal. Mode Pribadi dengan cadangan lewat berkas.</p><span class="btn btn-primary">Lihat dan unduh</span></a>
     </div>
-    <div class="note"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg><span><b>Memperbarui:</b> pasang versi baru <b>di atas</b> aplikasi lama. Jangan dihapus dulu supaya data tetap ada. Di dalam aplikasi, buka Lainnya, lalu Pengaturan, dan ketuk Periksa pembaruan.</span></div>
   </section>
 
   <section class="sec rv" id="info">
@@ -378,7 +378,7 @@ footer .fl{display:flex;gap:18px;flex-wrap:wrap}
   <section class="cta-band rv">
     <h2>Siap mengatur uang lebih tenang?</h2>
     <p>Unduh Batas Jajan, pasang dalam hitungan menit, dan mulai mencatat hari ini.</p>
-    <a class="btn btn-primary" href="#unduh">Kembali ke tombol unduh</a>
+    <a class="btn btn-primary" href="#pasang">Pilih Android atau Windows</a>
   </section>
 </div>
 </main>
@@ -386,13 +386,13 @@ footer .fl{display:flex;gap:18px;flex-wrap:wrap}
 <footer>
   <div class="wrap">
     <span>Dibuat oleh Teritorial &middot; Batas Jajan <span id="ver3">v1.7.0</span></span>
-    <span class="fl"><a href="privacy.html">Kebijakan Privasi</a><a href="https://forms.gle/u1wR8XMx7bnmRf876">Kirim masukan</a><a href="https://github.com/Randteritorial/batas-jajan-info/releases">Riwayat versi</a></span>
+    <span class="fl"><a href="privacy.html">Kebijakan Privasi</a><a href="https://forms.gle/u1wR8XMx7bnmRf876">Kirim masukan</a></span>
   </div>
 </footer>
 
 <script>
 (function(){
-  var REPO="Randteritorial/batas-jajan-info",dl=document.getElementById("dl"),meta=document.getElementById("meta");
+  var REPO="Randteritorial/batas-jajan-info",meta=document.getElementById("meta");
   function setVer(v){
     if(!v)return;
     document.getElementById("ver").textContent="v"+v;
@@ -400,24 +400,11 @@ footer .fl{display:flex;gap:18px;flex-wrap:wrap}
     document.getElementById("ver3").textContent="v"+v;
   }
   fetch("https://api.github.com/repos/"+REPO+"/releases/latest").then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
-    var a=(j.assets||[]).filter(function(x){return /\.apk$/i.test(x.name)})[0];
-    if(!a)throw 0;
-    dl.href=a.browser_download_url;dl.removeAttribute("aria-disabled");
-    dl.textContent="Unduh "+a.name.replace(/\.apk$/i,"").replace(/-/g," ").replace(/ v/," v");
+    var m=/(\d+(?:\.\d+)+)/.exec(j.tag_name||"");if(m)setVer(m[1]);
     var d=new Date(j.published_at);
-    meta.textContent=a.name+" · "+(a.size/1048576).toFixed(1)+" MB · dirilis "+d.toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
-    var m=/(\d+\.\d+\.\d+)/.exec(j.tag_name||a.name);if(m)setVer(m[1]);
+    if(m)meta.textContent="Versi terbaru v"+m[1]+" · dirilis "+d.toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
   }).catch(function(){
-    fetch("versi.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){
-      if(!j.url)throw 0;
-      dl.href=j.url;dl.removeAttribute("aria-disabled");
-      dl.textContent="Unduh Batas Jajan v"+j.version;
-      meta.textContent="Versi "+j.version;
-      setVer(j.version);
-    }).catch(function(){
-      dl.removeAttribute("aria-disabled");
-      meta.textContent="Belum bisa membaca versi terbaru. Tombol membuka halaman rilis.";
-    });
+    fetch("versi.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){setVer(j.version)}).catch(function(){});
   });
 
   /* bilah atas: bayangan saat digulir dan penanda bagian aktif */
